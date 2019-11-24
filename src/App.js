@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Person from './Person/Person';
+import Assignment from './Assignment/Assignment';
+import UserOutput from './Assignment/UserOutput/UserOutput';
 import './App.css';
 
 class App extends Component {
@@ -18,7 +20,38 @@ class App extends Component {
 				age: '26'
 			}
 		],
-		otherState: 'some other value'
+		otherState: 'some other value',
+		assignmentState: {
+			persons: [
+				{
+					name: 'Nabuchodonozor'
+				},
+				{
+					name: 'Emmanuel'
+				},
+				{
+					name: 'Solomon'
+				}
+			]
+		}
+	};
+
+	assignmentStateNameChangeHandler = (event) => {
+		this.setState({
+			assignmentState: {
+				persons: [
+					{
+						name: event.target.value
+					},
+					{
+						name: event.target.value
+					},
+					{
+						name: event.target.value
+					}
+				]
+			}
+		});
 	};
 
 	switchNameHandler = (newName) => {
@@ -99,6 +132,18 @@ class App extends Component {
 					name={this.state.persons[2].name}
 					age={this.state.persons[2].age}
 				/>
+
+				<Assignment
+					title='Assignment no. 1'
+				>
+					{this.state.assignmentState.persons.map((elt, index) =>
+						<UserOutput
+							key={index}
+							name={elt.name}
+							nameChangeHandler={this.assignmentStateNameChangeHandler}
+						/>
+					)}
+				</Assignment>
       </div>
     );
 	//   return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Does this work now?')) ;

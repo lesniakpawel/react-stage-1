@@ -1,0 +1,7 @@
+.user-input > input {
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	color: #ccc;
+	padding: 16px;
+	margin: 5px auto;
+}
