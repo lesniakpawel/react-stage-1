@@ -14,6 +14,7 @@ const userOutput = (props) => {
 			</p>
 
 			<UserInput
+				userId={props.userId}
 				value={props.name}
 				onChangeHandler={props.nameChangeHandler}
 			/>

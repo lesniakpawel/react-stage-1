@@ -24,12 +24,15 @@ class App extends Component {
 		assignmentState: {
 			persons: [
 				{
+					id: 1,
 					name: 'Nabuchodonozor'
 				},
 				{
+					id: 2,
 					name: 'Emmanuel'
 				},
 				{
+					id: 3,
 					name: 'Solomon'
 				}
 			]
@@ -37,19 +40,12 @@ class App extends Component {
 	};
 
 	assignmentStateNameChangeHandler = (event) => {
+		const { persons } = this.state.assignmentState;
+		persons[event.target.id - 1].name = event.target.value;
+
 		this.setState({
 			assignmentState: {
-				persons: [
-					{
-						name: event.target.value
-					},
-					{
-						name: event.target.value
-					},
-					{
-						name: event.target.value
-					}
-				]
+				persons
 			}
 		});
 	};
@@ -139,6 +135,7 @@ class App extends Component {
 					{this.state.assignmentState.persons.map((elt, index) =>
 						<UserOutput
 							key={index}
+							userId={elt.id}
 							name={elt.name}
 							nameChangeHandler={this.assignmentStateNameChangeHandler}
 						/>
