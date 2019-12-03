@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import './App.css';
 
 const StyledButton = styled.button`
-	background-color: green;
+	background-color: ${props => props.alt ? 'red' : 'green'};
 	color: white;
 	font: inherit;
 	border: 1px solid blue;
@@ -12,7 +12,7 @@ const StyledButton = styled.button`
 	cursor: pointer;
 	
 	&:hover {
-		background-color: lightgreen;
+		background-color: ${props => props.alt ? 'salmon' : 'lightgreen'};
 		color: black;
 	}
 `;
@@ -122,6 +122,7 @@ class App extends Component {
 				<p className={classes.join(' ')}>This is really working!</p>
 
 				<StyledButton
+					alt={this.state.showPersons ? 1 : 0} //just a workaround used to get rid of the warning - initially this was set to 'this.state.showPersons' - PL
 					onClick={this.togglePersonsHandler}
 				>
 					Toggle Persons
